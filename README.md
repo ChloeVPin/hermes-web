@@ -15,6 +15,12 @@
   <img src="https://img.shields.io/badge/release-v1.0.0-fb2c36?style=flat-square&labelColor=170d02" alt="Release v1.0.0" />
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/early%20stage-development-ffac02?style=flat-square&labelColor=170d02" alt="Early stage development" />
+</p>
+
+> Hermes-Web is in early stage development. Expect broken features, rough edges, and incomplete flows. Testers are welcome, and reports that help break the app are greatly appreciated.
+
 ---
 
 ## Overview
