@@ -1,0 +1,23 @@
+--- a/tui_gateway/server.py
++++ b/tui_gateway/server.py
+@@ -4,1 +4,8 @@
+-import json
++# Speed patch: use orjson if available (3-10x faster JSON encode/decode)
++try:
++    import orjson as _orjson
++    class _json_compat:
++        loads = staticmethod(lambda s: _orjson.loads(s))
++        dumps = staticmethod(lambda o, **kw: _orjson.dumps(o).decode())
++    json = _json_compat
++except ImportError:
++    import json
+ 
+--- a/tui_gateway/server.py (prefetch_update_check)
++++ b/tui_gateway/server.py (prefetch_update_check)
+ # Move update check to a background thread so it doesn't block gateway.ready
+ try:
+     from hermes_cli.banner import prefetch_update_check
+-    prefetch_update_check()
++    threading.Thread(target=prefetch_update_check, daemon=True).start()
+ except Exception:
+     pass
